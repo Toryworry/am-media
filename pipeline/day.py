@@ -143,8 +143,7 @@ def slide_cta(m, n, t, idx, total):
 {pcr(m, n['photo'], c['cr'], 'right:72px;top:732px')}
 <div style="position:absolute;left:72px;right:72px;top:800px;{COND};font-size:100px;line-height:.95;letter-spacing:-2px">{t['q1']} <span style="color:{m['accentText']}">{t['q2']}</span></div>
 <div style="position:absolute;left:72px;top:1125px;{CAV};font-size:58px;transform:rotate(-2deg)">{m['comments']}</div>
-<div style="position:absolute;left:0;right:0;bottom:0;height:110px;background:{m['accent']};color:{m['ink']};display:flex;align-items:center;justify-content:space-between;padding:0 72px;box-sizing:border-box">
-<div style="font-weight:900;font-size:30px;letter-spacing:3px">{m['save']}</div><div style="font-weight:700;font-size:26px;letter-spacing:2px">{m['site']}</div></div>''')
+''')
 
 # ---------- stories 1080x1920 ----------
 def story_cover(m, n, t):
