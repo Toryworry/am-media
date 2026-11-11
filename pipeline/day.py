@@ -1,7 +1,7 @@
 import asyncio, os, sys, json
 from playwright.async_api import async_playwright
 
-DATE = '2026-11-11'
+DATE = '2026-11-12'
 ROOT = '/home/claude/day'
 OUT = f'/home/claude/am-media/{DATE}'
 PH = f'file://{ROOT}/photos/'
@@ -19,36 +19,39 @@ MK = {
 
 # ---------- content ----------
 N = {
- 'byd': {
-  'cover': 'dark', 'photo': 'byd_p36975646.jpg', 'photo2': 'byd_p37048022.jpg', 'photo3': 'byd_p38099160.jpg',
-  'ua': dict(badgeC='', title1='BYD перевірять', title2='на шпигунство?',
-             sub='Євродепутати хочуть знати, куди йдуть дані з камер і датчиків авто', cr='Фото: Pexels',
-             items=['Запит подали 14 євродепутатів 4 листопада', 'Просять висновку агентства ЄС з кібербезпеки', 'BYD можуть визнати «постачальником високого ризику»', 'BYD: дані європейців у Китай не передаються'],
-             factsnote='далі цифри →', big='2,7%', bigcap='частка BYD на ринку Європи за 9 місяців',
-             badge='283 997 авто', badgesub='продано в Європі — більше, ніж Ford', statsub='Заборони поки немає — власникам нічого не загрожує',
-             q1='Довіряєте китайським', q2='авто?'),
-  'lv': dict(badgeC='', title1='Vai BYD', title2='spiego?',
-             sub='Eiroparlamentārieši grib zināt, kur nonāk dati no auto kamerām un sensoriem', cr='Foto: Pexels',
-             items=['Pieprasījumu 4. novembrī iesniedza 14 deputāti', 'Lūdz ES kiberdrošības aģentūras vērtējumu', 'BYD var atzīt par augsta riska piegādātāju', 'BYD: eiropiešu dati uz Ķīnu netiek nodoti'],
-             factsnote='tālāk skaitļi →', big='2,7%', bigcap='BYD tirgus daļa Eiropā 9 mēnešos',
-             badge='283 997 auto', badgesub='pārdoti Eiropā — vairāk nekā Ford', statsub='Aizlieguma pagaidām nav — īpašniekiem nekas nedraud',
-             q1='Vai uzticaties Ķīnas', q2='auto?'),
+ 'pajero': {
+  'cover': 'dark', 'photo': 'pajero_7.jpg', 'photo2': 'pajero_1.jpg', 'photo3': 'pajero_4.jpg', 'photo4': 'pajero_5.jpg', 'pos2': '50% 40%', 'pos3': '50% 55%',
+  'ua': dict(badgeC='', title1='Pajero повернувся', title2='і готовий до бруду',
+             sub='Mitsubishi підготувала 20 заводських аксесуарів для бездоріжжя ще до старту продажів',
+             items=['Сталевий силовий бампер, сумісний з усіма датчиками ADAS', 'Захист днища, силові пороги і шноркель', 'Експедиційний багажник і LED-прожектори', 'Посилений фаркоп і місце під лебідку'],
+             factsnote='далі цифри →', big='201', bigunit='к.с.', bigcap='видає 2,4-літровий турбодизель',
+             badge='480 Нм', badgesub='8-ступінчастий автомат і повний привід Super Select', statsub='Продажі на перших ринках стартують у грудні',
+             q1='А ви б узяли', q2='новий Pajero?'),
+  'lv': dict(badgeC='', title1='Pajero atgriežas', title2='gatavs dubļiem',
+             sub='Mitsubishi vēl pirms pārdošanas sākuma sagatavoja 20 rūpnīcas aksesuārus bezceļiem',
+             items=['Tērauda bamperis, saderīgs ar visiem ADAS sensoriem', 'Dibena aizsardzība, sliekšņu aizsargi un snorkelis', 'Ekspedīciju bagāžnieks un LED prožektori', 'Pastiprināts sakabes āķis un vieta vinčai'],
+             factsnote='tālāk skaitļi →', big='201', bigunit='ZS', bigcap='dod 2,4 litru turbodīzelis',
+             badge='480 Nm', badgesub='8 pakāpju automāts un pilnpiedziņa Super Select', statsub='Pārdošana pirmajos tirgos sāksies decembrī',
+             q1='Vai jūs ņemtu', q2='jauno Pajero?'),
  },
- 'merc': {
-  'cover': 'edit', 'photo': 'merc_1.jpg', 'photo2': 'merc_p10224347.jpg', 'photo3': 'merc_p18569436.jpg', 'pos2': '50% 62%', 'pos3': '50% 72%',
-  'ua': dict(t1='Бензин і дизель проживуть ще', t2='15 років', sub='Так вважає очільник Mercedes Ола Келленіус', cr='Фото: Mercedes-Benz, Pexels',
-             items=['ДВЗ протримається щонайменше 10, а ймовірно 15 років', 'Повний перехід на електрику займе 20–25 років', 'Нові мотори вже адаптують до норм Euro 7', 'Дизель залишиться в лінійці Mercedes'],
-             factsnote='далі цифри →', big='40', bigunit='моделей', bigcap='випустить Mercedes за 3 роки',
-             badge='V8', badgesub='залишається у виробництві для топових моделей', statsub='Серед новинок — і бензинові, і дизельні, і електричні авто',
-             q1='А що виберете ви:', q2='ДВЗ чи електро?'),
-  'lv': dict(t1='Benzīns un dīzelis dzīvos vēl', t2='15 gadus', sub='Tā uzskata Mercedes vadītājs Ola Källenius', cr='Foto: Mercedes-Benz, Pexels',
-             items=['Iekšdedzes dzinējs paliks vismaz 10, iespējams, 15 gadus', 'Pilna pāreja uz elektrību aizņems 20–25 gadus', 'Jaunie motori jau tiek gatavoti Euro 7 normām', 'Dīzelis paliks Mercedes modeļu klāstā'],
-             factsnote='tālāk skaitļi →', big='40', bigunit='modeļi', bigcap='Mercedes izlaidīs 3 gadu laikā',
-             badge='V8', badgesub='paliek ražošanā augstākās klases modeļiem', statsub='Jaunumu vidū — benzīna, dīzeļa un elektriskie auto',
-             q1='Ko izvēlētos jūs:', q2='benzīnu, dīzeli vai elektro?'),
+ 'ua_an': {
+  'cover': 'edit', 'photo': 'cars_p17051849.jpg', 'photo2': 'cars_p16896042.jpg', 'photo3': 'cars_p25286593.jpg', 'ptop': 500, 'pos3': '50% 70%',
+  'ua': dict(t1='Гібридів на продаж', t2='удвічі більше', sub='Що показують оголошення на automoto.ua за жовтень',
+             items=['На продаж виставили 143 тис. легковиків — на 9% більше, ніж торік', 'Гібридів — 5,4 тис., більш ніж удвічі більше', 'Бензин — 42% пропозицій, дизель — 29%, газ — 18%', 'Електромобілів — 8,1 тис., частка не змінилась (≈6%)'],
+             factsnote='далі ціни →', big='+17%', bigcap='подорожчали бензинові авто за рік',
+             badge='$7 600', badgesub='медіанна ціна бензинового авто в жовтні', statsub='Електромобілі за рік подешевшали на 2% — до $17 600',
+             q1='А що виберете ви:', q2='бензин, гібрид чи електро?'),
+ },
+ 'lv_fuel': {
+  'cover': 'edit', 'photo': 'fuel_p12377481.jpg', 'photo2': 'fuel_p34058522.jpg', 'photo3': 'fuel_p7908624.jpg', 'ptop': 500,
+  'lv': dict(t1='Degvielas cenas janvārī', t2='var celties', sub='Viss atkarīgs no tā, vai valdība pagarinās samazināto akcīzes likmi',
+             items=['Ja atvieglojumu nepagarinās, cenas augs līdz ar akcīzi', 'Latvijā — zemākā degvielas akcīze Baltijā', 'Bet arī augstākā valsts rezerves nodeva', 'Brent naftas cena noslīdējusi zem 100 $'],
+             factsnote='tālāk skaitļi →', big='+38%', bigcap='dīzeļdegvielas cenas pieaugums gada laikā',
+             badge='+28%', badgesub='95. benzīns tajā pašā laikā', statsub='Dati: Centrālā statistikas pārvalde',
+             q1='Cik jūs mēnesī', q2='tērējat degvielai?'),
  },
 }
-ORDER = ['byd', 'merc']
+ORDER = {'ua': ['pajero', 'ua_an'], 'lv': ['pajero', 'lv_fuel']}
 ARROW = '<svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
 
 def page(w, h, bg, fg, inner):
@@ -66,6 +69,7 @@ def top(m, y, right, ptype='plaque', pbg=None, pfg=None):
 PHOTO_CR = {
  'merc_1.jpg': {'ua': 'Фото: Mercedes-Benz', 'lv': 'Foto: Mercedes-Benz'},
  'ktm_1_up.jpg': {'ua': 'Фото: KTM X-Bow', 'lv': 'Foto: KTM X-Bow'}, 'ktm_2_up.jpg': {'ua': 'Фото: KTM X-Bow', 'lv': 'Foto: KTM X-Bow'}, 'ktm_cut.png': {'ua': 'Фото: KTM X-Bow', 'lv': 'Foto: KTM X-Bow'},
+ **{f'pajero_{i}.jpg': {'ua': 'Фото: Mitsubishi', 'lv': 'Foto: Mitsubishi'} for i in (1, 4, 5, 7)},
  'rav4_1_up.jpg': {'ua': 'Фото: Toyota', 'lv': 'Foto: Toyota'}, 'rav4_2_up.jpg': {'ua': 'Фото: Toyota', 'lv': 'Foto: Toyota'},
 }
 def pcr(m, photo, c, css):
@@ -98,14 +102,16 @@ def cover_card(m, n, t, H=1350, y0=0, photoH=700):
 {pcr(m, n['photo'], '#9e9e9e', f'right:72px;top:{174+photoH+y0}px')}
 {'' if H != 1350 else f"""<div style="position:absolute;left:-40px;bottom:34px;width:1200px;height:56px;background:{m['accent']};transform:rotate(-2deg);display:flex;align-items:center;overflow:hidden;white-space:nowrap"><span style="{COND};font-size:30px;letter-spacing:2px;color:{m['ink']}">{m['tag']} ✦ {m['site']} ✦ {m['tag']} ✦ {m['site']} ✦ {m['tag']} ✦ {m['site']}</span></div>"""}''')
 
-def cover_edit(m, n, t, H=1350, y0=0, topY=64, photoH=600):
+def cover_edit(m, n, t, H=1350, y0=0, topY=64, photoH=None):
+    pt = n.get('ptop', 650)
+    if photoH is None: photoH = 1350 - pt - 100 if pt != 650 else 600
     return page(1080, H, '#F6F5F2', '#111', f"""{top(m, topY, m['tag'])}
 <div style="position:absolute;left:72px;right:72px;top:{190+y0}px">
 <div style="{COND};font-size:96px;line-height:.92;letter-spacing:-1px;color:#111">{t['t1']} <span style="color:{m['accentText']}">{t['t2']}</span></div>
 <div style="font-size:34px;font-weight:500;color:#444;margin-top:24px;max-width:860px;line-height:1.3">{t['sub']}</div></div>
-<img src="{PH}{n['photo']}" style="position:absolute;left:48px;top:{650+y0}px;width:984px;height:{photoH}px;object-fit:cover;object-position:50% 50%;border-radius:36px">
-<div style="position:absolute;right:96px;top:{600+y0}px;width:112px;height:112px;border-radius:50%;background:{m['accent']};display:flex;align-items:center;justify-content:center;border:8px solid #F6F5F2">{ARROW}</div>
-{pcr(m, n['photo'], '#8a8a8a', f'right:72px;top:{660+photoH+y0}px')}""")
+<img src="{PH}{n['photo']}" style="position:absolute;left:48px;top:{pt+y0}px;width:984px;height:{photoH}px;object-fit:cover;object-position:50% 50%;border-radius:36px">
+<div style="position:absolute;right:96px;top:{pt-50+y0}px;width:112px;height:112px;border-radius:50%;background:{m['accent']};display:flex;align-items:center;justify-content:center;border:8px solid #F6F5F2">{ARROW}</div>
+{pcr(m, n['photo'], '#8a8a8a', f'right:72px;top:{pt+10+photoH+y0}px')}""")
 
 # ---------- slides (theme follows the cover) ----------
 def TH(n):
@@ -138,9 +144,9 @@ def slide_stat(m, n, t, idx, total):
 def slide_cta(m, n, t, idx, total):
     c = TH(n)
     return page(1080, 1350, c['bg'], c['fg'], f'''{top(m, 56, f'0{idx} / 0{total}', 'pill', pfg=c['fg'])}
-<img src="{PH}{n['photo']}" style="position:absolute;left:48px;top:160px;width:984px;height:560px;object-fit:cover;object-position:50% 50%;border-radius:28px">
+<img src="{PH}{n.get('photo4', n['photo'])}" style="position:absolute;left:48px;top:160px;width:984px;height:560px;object-fit:cover;object-position:50% 50%;border-radius:28px">
 <div style="position:absolute;left:72px;top:690px;transform:rotate(-3deg);background:{m['accent']};color:{m['ink']};font-weight:900;font-size:34px;letter-spacing:2px;padding:10px 22px">{m['question']}</div>
-{pcr(m, n['photo'], c['cr'], 'right:72px;top:732px')}
+{pcr(m, n.get('photo4', n['photo']), c['cr'], 'right:72px;top:732px')}
 <div style="position:absolute;left:72px;right:72px;top:800px;{COND};font-size:100px;line-height:.95;letter-spacing:-2px">{t['q1']} <span style="color:{m['accentText']}">{t['q2']}</span></div>
 <div style="position:absolute;left:72px;top:1125px;{CAV};font-size:58px;transform:rotate(-2deg)">{m['comments']}</div>
 ''')
@@ -150,7 +156,7 @@ def story_cover(m, n, t):
     if n['cover'] == 'light':
         return cover_light(m, n, t, H=1920, y0=300, topY=230)
     if n['cover'] == 'edit':
-        return cover_edit(m, n, t, H=1920, y0=200, topY=230, photoH=720)
+        return cover_edit(m, n, t, H=1920, y0=200, topY=230, photoH=720 if n.get('ptop', 650) == 650 else 1460 - n['ptop'])
     return cover_card(m, n, t, H=1920, y0=180, photoH=760)
 
 def story_facts(m, n, t, theme):
@@ -177,7 +183,7 @@ async def main():
     for mk, m in MK.items():
         d = f'{OUT}/{mk}'; os.makedirs(d, exist_ok=True)
         covers = []
-        for key in ORDER:
+        for key in ORDER[mk]:
             n = N[key]; t = n[mk]
             cov = {'light': cover_light, 'dark': cover_card, 'edit': cover_edit}[n['cover']](m, n, t)
             jobs.append((f'{d}/{key}_1.jpg', cov, 1080, 1350)); covers.append(f'file://{d}/{key}_1.jpg')
