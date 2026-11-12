@@ -1,7 +1,7 @@
 import asyncio, os, sys, json
 from playwright.async_api import async_playwright
 
-DATE = '2026-11-12'
+DATE = '2026-11-13'
 ROOT = '/home/claude/day'
 OUT = f'/home/claude/am-media/{DATE}'
 PH = f'file://{ROOT}/photos/'
@@ -19,39 +19,36 @@ MK = {
 
 # ---------- content ----------
 N = {
- 'pajero': {
-  'cover': 'dark', 'photo': 'pajero_7.jpg', 'photo2': 'pajero_1.jpg', 'photo3': 'pajero_4.jpg', 'photo4': 'pajero_5.jpg', 'pos2': '50% 40%', 'pos3': '50% 55%',
-  'ua': dict(badgeC='', title1='Pajero повернувся', title2='і готовий до бруду',
-             sub='Mitsubishi підготувала 20 заводських аксесуарів для бездоріжжя ще до старту продажів',
-             items=['Сталевий силовий бампер, сумісний з усіма датчиками ADAS', 'Захист днища, силові пороги і шноркель', 'Експедиційний багажник і LED-прожектори', 'Посилений фаркоп і місце під лебідку'],
-             factsnote='далі цифри →', big='201', bigunit='к.с.', bigcap='видає 2,4-літровий турбодизель',
-             badge='480 Нм', badgesub='8-ступінчастий автомат і повний привід Super Select', statsub='Продажі на перших ринках стартують у грудні',
-             q1='А ви б узяли', q2='новий Pajero?'),
-  'lv': dict(badgeC='', title1='Pajero atgriežas', title2='gatavs dubļiem',
-             sub='Mitsubishi vēl pirms pārdošanas sākuma sagatavoja 20 rūpnīcas aksesuārus bezceļiem',
-             items=['Tērauda bamperis, saderīgs ar visiem ADAS sensoriem', 'Dibena aizsardzība, sliekšņu aizsargi un snorkelis', 'Ekspedīciju bagāžnieks un LED prožektori', 'Pastiprināts sakabes āķis un vieta vinčai'],
-             factsnote='tālāk skaitļi →', big='201', bigunit='ZS', bigcap='dod 2,4 litru turbodīzelis',
-             badge='480 Nm', badgesub='8 pakāpju automāts un pilnpiedziņa Super Select', statsub='Pārdošana pirmajos tirgos sāksies decembrī',
-             q1='Vai jūs ņemtu', q2='jauno Pajero?'),
+ 'polestar': {
+  'cover': 'dark', 'photo': 'polestar_exterior-17.jpg', 'photo2': 'polestar_exterior-02.jpg', 'photo3': 'polestar_exterior-21.jpg', 'photo4': 'polestar_exterior-20.jpg', 'pos2': '50% 50%', 'pos3': '50% 60%',
+  'ua': dict(badgeC='', title1='Новий Polestar 2:', title2='перший погляд',
+             sub='Концепт Formula 2030 показав дизайн наступного покоління',
+             items=['Фари Dual Blade перейдуть на серійний Polestar 2', 'Новий Polestar 2 стане кросовером', 'Кермо-штурвал і 20-дюймова панель приладів', 'Екран ховається в консоль у спортивному режимі'],
+             factsnote='далі цифри →', big='4680', bigunit='мм', bigcap='довжина концепту Formula 2030',
+             badge='22″', badgesub='диски з центральною гайкою', statsub='Задні двері відчиняються проти руху — без центральної стійки',
+             q1='А ви б хотіли, щоб новий Polestar 2', q2='виглядав саме так?'),
+  'lv': dict(badgeC='', title1='Jaunais Polestar 2', title2='pirmais ieskats',
+             sub='Formula 2030 koncepcija parādīja nākamās paaudzes dizainu',
+             items=['Dual Blade lukturi pāries uz sērijveida Polestar 2', 'Jaunais Polestar 2 kļūs par krosoveru', 'Štūrvāļa tipa stūre un 20 collu mērinstrumentu panelis', 'Sporta režīmā ekrāns ieslīd konsolē'],
+             factsnote='tālāk skaitļi →', big='4680', bigunit='mm', bigcap='Formula 2030 koncepcijas garums',
+             badge='22″', badgesub='diski ar centrālo uzgriezni', statsub='Aizmugurējās durvis veras pretēji braukšanas virzienam — bez vidējā statņa',
+             q1='Vai jūs gribētu, lai jaunais Polestar 2', q2='izskatītos tieši tā?'),
  },
- 'ua_an': {
-  'cover': 'edit', 'photo': 'cars_p17051849.jpg', 'photo2': 'cars_p16896042.jpg', 'photo3': 'cars_p25286593.jpg', 'ptop': 500, 'pos3': '50% 70%',
-  'ua': dict(t1='Гібридів на продаж', t2='удвічі більше', sub='Що показують оголошення на automoto.ua за жовтень',
-             items=['На продаж виставили 143 тис. легковиків — на 9% більше, ніж торік', 'Гібридів — 5,4 тис., більш ніж удвічі більше', 'Бензин — 42% пропозицій, дизель — 29%, газ — 18%', 'Електромобілів — 8,1 тис., частка не змінилась (≈6%)'],
-             factsnote='далі ціни →', big='+17%', bigcap='подорожчали бензинові авто за рік',
-             badge='$7 600', badgesub='медіанна ціна бензинового авто в жовтні', statsub='Електромобілі за рік подешевшали на 2% — до $17 600',
-             q1='А що виберете ви:', q2='бензин, гібрид чи електро?'),
- },
- 'lv_fuel': {
-  'cover': 'edit', 'photo': 'fuel_p12377481.jpg', 'photo2': 'fuel_p34058522.jpg', 'photo3': 'fuel_p7908624.jpg', 'ptop': 500,
-  'lv': dict(t1='Degvielas cenas janvārī', t2='var celties', sub='Viss atkarīgs no tā, vai valdība pagarinās samazināto akcīzes likmi',
-             items=['Ja atvieglojumu nepagarinās, cenas augs līdz ar akcīzi', 'Latvijā — zemākā degvielas akcīze Baltijā', 'Bet arī augstākā valsts rezerves nodeva', 'Brent naftas cena noslīdējusi zem 100 $'],
-             factsnote='tālāk skaitļi →', big='+38%', bigcap='dīzeļdegvielas cenas pieaugums gada laikā',
-             badge='+28%', badgesub='95. benzīns tajā pašā laikā', statsub='Dati: Centrālā statistikas pārvalde',
-             q1='Cik jūs mēnesī', q2='tērējat degvielai?'),
+ 'cupra': {
+  'cover': 'edit', 'photo': 'cupra_terramar_03.jpg', 'photo2': 'cupra_terramar_07.jpg', 'photo3': 'cupra_terramar_10.jpg', 'photo4': 'cupra_terramar_12.jpg', 'ptop': 560, 'pos2': '50% 55%', 'pos3': '50% 55%',
+  'ua': dict(t1='Terramar з мотором', t2='від Audi RS3', sub="Cupra, схоже, готує п'ятициліндровий Terramar VZ5",
+             items=['2,5-літровий турбомотор, 5 циліндрів', 'Близько 384 к.с. і 480 Нм', 'Повний привід і DSG-7', 'Дебют очікують на початку 2027 року'],
+             factsnote='далі цифри →', big='4,2', bigunit='с', bigcap='орієнтовний розгін до 100 км/год',
+             badge='~384 к.с.', badgesub='очікувана потужність', statsub='Офіційно Cupra новинку ще не підтвердила',
+             q1='А ви б узяли Terramar VZ5', q2='замість гібрида?'),
+  'lv': dict(t1='Terramar ar', t2='Audi RS3 motoru', sub='Izskatās, ka Cupra gatavo piecu cilindru Terramar VZ5',
+             items=['2,5 litru turbo motors, 5 cilindri', 'Aptuveni 384 ZS un 480 Nm', 'Pilnpiedziņa un DSG-7', 'Debiju gaida 2027. gada sākumā'],
+             factsnote='tālāk skaitļi →', big='4,2', bigunit='s', bigcap='aptuvenais paātrinājums līdz 100 km/h',
+             badge='~384 ZS', badgesub='gaidāmā jauda', statsub='Oficiāli Cupra jaunumu vēl nav apstiprinājusi',
+             q1='Vai jūs ņemtu Terramar VZ5', q2='hibrīda vietā?'),
  },
 }
-ORDER = {'ua': ['pajero', 'ua_an'], 'lv': ['pajero', 'lv_fuel']}
+ORDER = {'ua': ['polestar', 'cupra'], 'lv': ['polestar', 'cupra']}
 ARROW = '<svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
 
 def page(w, h, bg, fg, inner):
@@ -70,6 +67,8 @@ PHOTO_CR = {
  'merc_1.jpg': {'ua': 'Фото: Mercedes-Benz', 'lv': 'Foto: Mercedes-Benz'},
  'ktm_1_up.jpg': {'ua': 'Фото: KTM X-Bow', 'lv': 'Foto: KTM X-Bow'}, 'ktm_2_up.jpg': {'ua': 'Фото: KTM X-Bow', 'lv': 'Foto: KTM X-Bow'}, 'ktm_cut.png': {'ua': 'Фото: KTM X-Bow', 'lv': 'Foto: KTM X-Bow'},
  **{f'pajero_{i}.jpg': {'ua': 'Фото: Mitsubishi', 'lv': 'Foto: Mitsubishi'} for i in (1, 4, 5, 7)},
+ **{p: {'ua': 'Фото: Polestar', 'lv': 'Foto: Polestar'} for p in ('polestar_exterior-17.jpg','polestar_exterior-02.jpg','polestar_exterior-21.jpg','polestar_exterior-20.jpg','polestar_interior-04.jpg')},
+ **{f'cupra_terramar_{i}.jpg': {'ua': 'Фото: Cupra', 'lv': 'Foto: Cupra'} for i in ('03','07','10','12')},
  'rav4_1_up.jpg': {'ua': 'Фото: Toyota', 'lv': 'Foto: Toyota'}, 'rav4_2_up.jpg': {'ua': 'Фото: Toyota', 'lv': 'Foto: Toyota'},
 }
 def pcr(m, photo, c, css):

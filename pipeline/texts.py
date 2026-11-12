@@ -1,15 +1,15 @@
 import csv, os, re, sys
-DATE = '2026-11-12'; D = DATE.replace('-', '/')
+DATE = '2026-11-13'; D = DATE.replace('-', '/')
 RAW = f'https://raw.githubusercontent.com/Toryworry/am-media/main/{DATE}'
 OUT = f'/home/claude/am-media/csv/{DATE}'; os.makedirs(OUT, exist_ok=True)
-md = open('/mnt/user-data/outputs/тексти_2026-11-12.md', encoding='utf-8').read()
+md = open('/mnt/user-data/outputs/тексти_2026-11-13.md', encoding='utf-8').read()
 
 # parse: section -> market -> network -> text
 T = {}; sec = mk = net = None; inblock = False; buf = []
 for line in md.split('\n'):
     if line.startswith('## '):
-        sec = 'pajero' if 'Pajero' in line else 'ua_an' if 'UA' in line else 'lv_fuel' if 'LV' in line else None
-        mk = 'ua' if sec == 'ua_an' else 'lv' if sec == 'lv_fuel' else None
+        sec = 'polestar' if 'Polestar' in line else 'cupra' if 'Cupra' in line else None
+        mk = None
     elif line.startswith('### '):
         mk = 'ua' if 'УКРА' in line else 'lv'
     elif line.startswith('**') and not inblock:
@@ -22,9 +22,9 @@ for line in md.split('\n'):
     elif inblock:
         buf.append(line)
 
-TIME = {'pajero': '10:00', 'ua_an': '20:00', 'lv_fuel': '20:00'}
-STORY_T = {'pajero': ('10:05', '10:06'), 'ua_an': ('20:05', '20:06'), 'lv_fuel': ('20:05', '20:06')}
-ORDER = {'ua': ['pajero', 'ua_an'], 'lv': ['pajero', 'lv_fuel']}
+TIME = {'polestar': '10:00', 'cupra': '20:00'}
+STORY_T = {'polestar': ('10:05', '10:06'), 'cupra': ('20:05', '20:06')}
+ORDER = {'ua': ['polestar', 'cupra'], 'lv': ['polestar', 'cupra']}
 HEADER = ["Date", "Text", "Link(s)", "Media URL(s)", "Title", "Label(s)", "Alt text(s)", "Comment(s)", "Pin board, FB album, or Google category", "Post subtype", "CTA", "Reminder"]
 def row(time, text, media, subtype=''):
     r = [''] * 12; r[0] = f'{D} {time}'; r[1] = text; r[3] = ','.join(media); r[5] = 'автоновини'; r[9] = subtype; return r
