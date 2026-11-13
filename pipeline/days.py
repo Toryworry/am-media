@@ -11,7 +11,7 @@ def cr(brand, files):
         tpl.PHOTO_CR[f] = {'ua': f'Фото: {brand}', 'lv': f'Foto: {brand}'}
 cr('Volkswagen', ['troc_1.jpg', 'troc_2.jpg', 'troc_3.jpg', 'troc_4.jpg', 'idt_73.jpg', 'idt_02.jpg', 'idt_prod.jpg', 'idt_10.jpg'])
 cr('Nissan', ['qq_rel-4.jpg', 'qq_rel-7.jpg', 'qq_sb-6.jpg', 'qq_rel-12.jpg'])
-cr('Honda', ['crv_t_preview-928x522.jpg', 'crvj_01.jpg'])
+cr('Honda', ['crve_1.jpg', 'crve_15.jpg', 'crve_20.jpg', 'crve_19.jpg'])
 cr('XPeng', ['xp_6.webp', 'xp_4.webp', 'xp_10.webp', 'xp_8.webp'])
 cr('Mercedes-Benz', ['eqe_e1.jpg'])
 
@@ -63,7 +63,7 @@ N = {
              factsnote='tālāk skaitļi →', big='7,3', bigunit='milj.', bigcap='tik Qashqai pārdoti 20 gados',
              badge='65%', badgesub='daļa no Nissan pārdošanas Eiropā', statsub='Jubilejai izveidoja unikālu auto ar iPod salonā',
              q1='Kurš Qashqai jums', q2='patīk visvairāk?')},
- 'crv': {'cover': 'dark', 'photo': 'crv_t_preview-928x522.jpg', 'photo2': 'crvj_01.jpg', 'photo3': 'crvj_01.jpg', 'photo4': 'crv_t_preview-928x522.jpg', 'pos2': '50% 60%', 'pos3': '50% 65%',
+ 'crv': {'cover': 'dark', 'photo': 'crve_1.jpg', 'photo2': 'crve_15.jpg', 'photo3': 'crve_20.jpg', 'photo4': 'crve_19.jpg', 'pos2': '50% 45%', 'pos3': '50% 45%',
   'ua': dict(badgeC='', title1='Новий Honda CR-V:', title2='тільки гібрид', sub='Honda показала перший тизер сьомого покоління',
              items=['Нова платформа: жорсткіша й легша', 'Гібрид з двома електромоторами', 'Новий електричний повний привід', 'У США з\'явиться наступного року'],
              factsnote='далі цифри →', big='10', bigunit='%', bigcap='на стільки має зменшитися витрата пального',
