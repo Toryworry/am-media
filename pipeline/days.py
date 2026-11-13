@@ -16,7 +16,7 @@ cr('XPeng', ['xp_6.webp', 'xp_4.webp', 'xp_10.webp', 'xp_8.webp'])
 cr('Mercedes-Benz', ['eqe_e1.jpg'])
 
 N = {
- 'tax': {'cover': 'dark', 'photo': 'tax_keys.jpg', 'photo2': 'tax_5.jpg', 'photo3': 'tax_3.jpg', 'photo4': 'tax_6.jpg', 'pos2': '50% 50%', 'pos3': '50% 55%',
+ 'tax': {'cover': 'dark', 'photo': 'tax_keys.jpg', 'photo2': 'tax_5.jpg', 'photo3': 'tax_9.jpg', 'photo4': 'tax_6.jpg', 'pos2': '50% 50%', 'pos3': '50% 55%',
   'ua': dict(badgeC='', title1='Продати авто швидко', title2='стане дорожче',
              sub='З 2027 року — до 23% податку, якщо володіли авто менше ніж 183 дні',
              items=['Пільга лише за володіння понад 183 дні', 'Менше ніж 183 дні — 23% податку', 'Другий продаж за рік — 10%', 'Правила мають запрацювати з 1 січня 2027 року'],
