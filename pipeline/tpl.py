@@ -64,7 +64,7 @@ def cover_card(m, n, t, H=1350, y0=0, photoH=700):
 <img src="{PH}{n['photo']}" style="position:absolute;left:48px;top:{160+y0}px;width:984px;height:{photoH}px;object-fit:cover;object-position:50% 45%;border-radius:36px">
 {f'<div style="position:absolute;left:96px;top:{90+photoH+y0}px;transform:rotate(-4deg);background:{m[chr(97)+"ccent"]};color:{m["ink"]};font-weight:900;font-size:96px;letter-spacing:-2px;padding:4px 26px 10px">{t["badgeC"]}</div>' if t['badgeC'] else ''}
 <div style="position:absolute;left:72px;right:72px;top:{230+photoH+y0}px;display:flex;flex-direction:column;gap:22px">
-<div style="{COND};font-size:{104 if max(len(t['title1']),len(t['title2']))<=16 else 86}px;line-height:.92;letter-spacing:-1px">{t['title1']}<br>{t['title2']}</div>
+<div style="{COND};font-size:{t.get('tsize') or (104 if max(len(t['title1']),len(t['title2']))<=16 else 86)}px;line-height:.92;letter-spacing:-1px">{t['title1']}<br>{t['title2']}</div>
 <div style="font-size:34px;font-weight:500;color:#d9d9d9">{t['sub']}</div></div>
 {pcr(m, n['photo'], '#9e9e9e', f'right:72px;top:{174+photoH+y0}px')}
 {'' if H != 1350 else f"""<div style="position:absolute;left:-40px;bottom:34px;width:1200px;height:56px;background:{m['accent']};transform:rotate(-2deg);display:flex;align-items:center;overflow:hidden;white-space:nowrap"><span style="{COND};font-size:30px;letter-spacing:2px;color:{m['ink']}">{m['tag']} ✦ {m['site']} ✦ {m['tag']} ✦ {m['site']} ✦ {m['tag']} ✦ {m['site']}</span></div>"""}''')
