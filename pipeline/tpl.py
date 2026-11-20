@@ -100,7 +100,7 @@ def slide_stat(m, n, t, idx, total):
     c = TH(n)
     unit = f'<span style="font-size:120px;letter-spacing:0">{t["bigunit"]}</span>' if t.get('bigunit') else ''
     return page(1080, 1350, c['bg'], c['fg'], f'''{top(m, 56, f'0{idx} / 0{total}', 'pill', pfg=c['fg'])}
-<div style="position:absolute;left:60px;top:150px;{COND};font-size:340px;line-height:.9;letter-spacing:-10px;color:{m['accent']}">{t['big']}{unit}</div>
+<div style="position:absolute;left:60px;top:{150 if len(t['big'])<=5 else 200}px;{COND};font-size:{340 if len(t['big'])<=5 else 250}px;line-height:.9;letter-spacing:{-10 if len(t['big'])<=5 else -6}px;color:{m['accent']};white-space:nowrap">{t['big']}{unit}</div>
 <div style="position:absolute;left:72px;top:480px;font-weight:700;font-size:32px;letter-spacing:3px;text-transform:uppercase">{t['bigcap']}</div>
 <img src="{PH}{n.get('photo3', n['photo'])}" style="position:absolute;left:48px;top:560px;width:984px;height:470px;object-fit:cover;object-position:{n.get('pos3','50% 50%')};border-radius:32px">
 {pcr(m, n.get('photo3', n['photo']), c['cr'], 'right:72px;top:1040px')}
