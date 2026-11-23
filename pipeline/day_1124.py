@@ -28,14 +28,14 @@ N = {
   'ua': dict(badgeC='', title1='Ferrari 296', title2='без гібрида',
              sub='Challenge Stradale — гоночна машина для звичайних доріг',
              items=['Електромотор і батарею прибрали: лише V6 бітурбо, 670\u00a0к.с.', 'Суха маса — 1330 кг, на 140 кг менше, ніж у 296 GTB', 'Притискна сила — 617 кг на швидкості 250 км/год', '0–100 км/год за 2,8 с'],
-             factsnote='далі цифри →', big='−2,5', bigunit=' с', bigcap='швидше за 296 GTB коло у Фьорано',
-             badge='670 к.с.', badgesub='проти 830 к.с. у 296 GTB', statsub='Коло у Фьорано — 1:18,5',
+             factsnote='далі цифри →', big='1330', bigunit=' кг', bigcap='суха маса — на 140 кг менше, ніж у 296 GTB',
+             badge='670 к.с.', badgesub='проти 830 к.с. у 296 GTB', statsub='0–100 км/год — за 2,8 с',
              q1='А що для вас важливіше в спортивному авто:', q2='потужність чи мала вага?'),
   'lv': dict(badgeC='', title1='Ferrari 296', title2='bez hibrīda',
              sub='Challenge Stradale – sacīkšu auto parastiem ceļiem',
              items=['Elektromotors un akumulators noņemti: tikai V6 biturbo, 670\u00a0ZS', 'Sausā masa – 1330 kg, par 140 kg mazāk nekā 296 GTB', 'Piespiedējspēks – 617 kg pie 250 km/h', '0–100 km/h 2,8 sekundēs'],
-             factsnote='tālāk skaitļi →', big='−2,5', bigunit=' s', bigcap='ātrāk nekā 296 GTB Fiorano aplī',
-             badge='670 ZS', badgesub='pret 830 ZS 296 GTB', statsub='Fiorano aplis – 1:18,5',
+             factsnote='tālāk skaitļi →', big='1330', bigunit=' kg', bigcap='sausā masa – par 140 kg mazāk nekā 296 GTB',
+             badge='670 ZS', badgesub='pret 830 ZS 296 GTB', statsub='0–100 km/h – 2,8 sekundēs',
              q1='Kas jums sporta auto ir svarīgāks:', q2='jauda vai mazs svars?')},
 }
 
