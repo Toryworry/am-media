@@ -109,7 +109,7 @@ async def main():
                 jobs.append((f'{d}/{key}_4.jpg', slide_cta(m, n, t, 4, 4), 1080, 1350))
                 jobs.append((f'{d}/{key}_story1.jpg', story_cover(m, n, t), 1080, 1920))
                 jobs.append((f'{d}/{key}_story2.jpg', story_facts(m, n, t, 'light' if n['cover'] == 'dark' else 'dark'), 1080, 1920))
-            jobs.append((f'{d}/final_story.jpg', ('final', m, covers), 1080, 1920))
+            # final story of the day is no longer made (Viktoriia 27.11)
     async with async_playwright() as p:
         b = await p.chromium.launch()
         pg = await b.new_page()
